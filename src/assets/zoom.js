@@ -135,27 +135,19 @@ function zoom(scale, relX, relY) {
     this.svgContainer.scrollTop = diffY;
 }
 
-window.addEventListener("wheel", e => {
-    if (e.ctrlKey) {
-        e.preventDefault();
+this.svgContainer.elem.addEventListener("wheel", e => {
+    if (e.ctrlKey === false) {
+        return;
     }
-}, {passive: false});
 
-if (this.svgContainer != undefined && this.svgContainer.elem != undefined) {
-    this.svgContainer.elem.addEventListener("wheel", e => {
-        if (e.ctrlKey === false) {
-            return;
-        }
-
-        e.preventDefault();
-        let [relX, relY] = this.getPointerRelativePos(e);
-        
-        if (e.deltaY < 0) {
-            this.zoom(this.zoomInScale, relX, relY);
-        } 
-        
-        if (e.deltaY > 0) {
-            this.zoom(this.zoomOutScale, relX, relY);
-        }
-    });
-}
+    e.preventDefault();
+    let [relX, relY] = this.getPointerRelativePos(e);
+    
+    if (e.deltaY < 0) {
+        this.zoom(this.zoomInScale, relX, relY);
+    } 
+    
+    if (e.deltaY > 0) {
+        this.zoom(this.zoomOutScale, relX, relY);
+    }
+});
