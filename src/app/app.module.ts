@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SvgzoomComponent } from './svgzoom/svgzoom.component';
+import { SvgZoomComponent } from './svg-zoom/svg-zoom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SvgzoomComponent
+    SvgZoomComponent
   ],
   imports: [
     BrowserModule,
